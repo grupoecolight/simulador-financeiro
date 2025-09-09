@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+body {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+#conteudo {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex: 1;
+}
+
+#secao-simulacao {
+    display: flex;
+    flex-direction: column;
+    background-color: #ebebeb;
+    width: 40%;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100vh;
+}
+
+h1 {
+    color: #16578D;
+    border-bottom: solid 3px #16578D;
+    border-bottom-width: 50%;
+    padding-bottom: 0.7rem;
+}
+
+img {
+    width: 300px;
+    height: 300px;
+}
+
+#caixa_inputs {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+input {
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    padding: 4px 5px;
+    margin-top: 3px;
+    box-shadow: 4px 4px 4px 0 rgb(0, 0, 0, 0.8);
+}
+
+label {
+    font-weight: 700;
+}
+
+button {
+    border: none;
+    border-radius: 10px;
+    background-color: #16578D;
+    color: #ffffff;
+    padding: 0.5rem;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#secao_cards {
+    background-color: #16578D;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1rem;
+    height: 100vh;
+}
+
+.card {
+    height: 300px;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: #ebebeb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 4px 4px 4px 0 rgb(0, 0, 0, 0.8);
+}
+
+.card_economizar {
+    width: 75%;
+    height: 300px;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: #ebebeb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 4px 4px 4px 0 rgb(0, 0, 0, 0.8);
+}
+
+h2 {
+    color: #16578D;
+    text-align: center;
+}
+
+.teste {
+    display: flex;
+    gap: 2rem;
+}
+
+.texto_card {
+    font-size: 50px;
+    font-weight: bold;
+    color: #F48924;
+    margin: auto 0;
+    text-align: center;
+}

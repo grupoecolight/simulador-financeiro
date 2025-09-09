@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="secao-simulacao">
+        <h1>Simulador Financeiro - EcoLight</h1>
+
+        <div id="caixa_inputs">
+            <label>
+                KWh gastos por mês:
+                <br>
+                <input type="text" id="input_quantidade_kwh">
+            </label>
+
+            <label>
+                Porcentagem:
+                <br>
+                <input type="text" id="input_porcentagem">
+            </label>
+
+            <label>
+                Insira os meses:
+                <br>
+                <input type="text" id="input_meses">
+            </label>
+        </div>
+
+        <button onclick="calcular()">Calcular economia</button>
+
+        <img src="./assets/logo-ecolight-transp.png" alt="logo ecolight">
+    </div>
+
+    <div id="secao_cards">
+
+        <div class="teste">
+            <div class="card">
+                <h2>Sem a Ecolight, você gastaria:</h2>
+                <span id="sem_ecolight_span" class="texto_card"></span>
+            </div>
+
+            <div class="card">
+                <h2>Com a Ecolight, você gastaria:</h2>
+                <span id="com_ecolight_span" class="texto_card"></span>
+
+            </div>
+        </div>
+
+        <div class="card_economizar">
+            <h2> Economizando:</h2>
+
+            <span id="economia_span" class="texto_card"></span>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function calcular() {
+        var quantidadeKwh = Number(input_quantidade_kwh.value);
+        var porcentagem = Number(input_porcentagem.value);
+        var meses = Number(input_meses.value);
+
+        var valorPorKwh = quantidadeKwh * 0.85
+
+        var semProduto = valorPorKwh * meses;
+        var comProduto = semProduto - semProduto * porcentagem / 100;
+        var valorPoupado = semProduto - comProduto;
+
+        sem_ecolight_span.innerHTML = ` R$${semProduto}`
+
+        com_ecolight_span.innerHTML = ` R$${comProduto}`
+
+        economia_span.innerHTML = ` R$${valorPoupado}`
+    }
+</script>
+<!-- A calculadora recebe os valores das quantidadeKwhs mesais, subtrai a porcentagem desejada e armazena em economia mensal. 
+Depois, ela calcula a longo prazo e armazena a economia prevista dos próximos anos
+ exibindo também o valor sem a a economia da energia.
+-->
