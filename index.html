@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora</title>
+    <title>Simulador Financeiro</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -14,27 +14,56 @@
 
         <div id="caixa_inputs">
             <label>
-                KWh gastos por mês:
+                KW gastos por mês
                 <br>
                 <input type="text" id="input_quantidade_kwh">
             </label>
 
-            <label>
-                Porcentagem:
-                <br>
-                <input type="text" id="input_porcentagem">
-            </label>
+            <div id="caixa_selects">
+                <label>
+                    Bandeira tarifária
+                    <br>
+                    <select id="">
+                        <option value="vermelha">Vermelha</option>
+                        <option value="verde">Verde</option>
+                    </select>
+                </label>
 
-            <label>
-                Insira os meses:
+                <label>
+                    Plano à calcular
+                    <br>
+                    <select id="">
+                        <option value="semanal">Semanal</option>
+                        <option value="mensal">Mensal</option>
+                        <option value="semestral">Semestral</option>
+                        <option value="anual">Anual</option>
+                    </select>
+                </label>
+            </div>
+
+        </div>
+
+
+        <div class="descricao_caixa">
+            <p>
+                Essa calculadora leva em consideração os seguintes dados:
                 <br>
-                <input type="text" id="input_meses">
-            </label>
+                <br>
+
+                Preço por KW: R$0,85
+
+                <br>
+                <br> Levando em conta uma economia de:<br>
+
+                <span class="porcentagem_span">20%</span>
+
+                <br> na despesa energética <br>
+            </p>
+
+            <img src="./assets/logo-ecolight-transp.png" alt="logo ecolight">
         </div>
 
         <button onclick="calcular()">Calcular economia</button>
-
-        <img src="./assets/logo-ecolight-transp.png" alt="logo ecolight">
     </div>
 
     <div id="secao_cards">
@@ -65,22 +94,31 @@
 <script>
     function calcular() {
         var quantidadeKwh = Number(input_quantidade_kwh.value);
-        var porcentagem = Number(input_porcentagem.value);
         var meses = Number(input_meses.value);
 
         var valorPorKwh = quantidadeKwh * 0.85
 
         var semProduto = valorPorKwh * meses;
-        var comProduto = semProduto - semProduto * porcentagem / 100;
+        var comProduto = semProduto - semProduto * 0.2;
         var valorPoupado = semProduto - comProduto;
 
-        sem_ecolight_span.innerHTML = ` R$${semProduto}`
+        sem_ecolight_span.innerHTML = `${semProduto.toLocaleString('pt-BR', {
+            style: "currency",
+            currency: 'BRL'
+        })}`
 
-        com_ecolight_span.innerHTML = ` R$${comProduto}`
+        com_ecolight_span.innerHTML = `${comProduto.toLocaleString('pt-BR', {
+            style: "currency",
+            currency: 'BRL'
+        })}`
 
-        economia_span.innerHTML = ` R$${valorPoupado}`
+        economia_span.innerHTML = `${valorPoupado.toLocaleString('pt-BR', {
+            style: "currency",
+            currency: 'BRL'
+        })}`
     }
 </script>
+
 <!-- A calculadora recebe os valores das quantidadeKwhs mesais, subtrai a porcentagem desejada e armazena em economia mensal. 
 Depois, ela calcula a longo prazo e armazena a economia prevista dos próximos anos
  exibindo também o valor sem a a economia da energia.

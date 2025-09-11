@@ -36,27 +36,68 @@ h1 {
 }
 
 img {
-    width: 300px;
-    height: 300px;
+    width: 220px;
+    height: 220px;
 }
 
 #caixa_inputs {
     display: flex;
-    gap: 1rem;
-    justify-content: center;
+    gap: 1.5rem;
+    flex-direction: column;
+    align-items: center;
+}
+
+#caixa_selects {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+select {
+    border: none;
+    border-radius: 10px;
+    padding: 4px 7px;
+    margin: 3px 0;
+    width: 150px;
+    cursor: pointer;
+    box-shadow: 4px 4px 4px 0 rgb(0, 0, 0, 0.8);
 }
 
 input {
     border-radius: 5px;
     border: none;
     outline: none;
-    padding: 4px 5px;
+    padding: 5px 8px;
     margin-top: 3px;
     box-shadow: 4px 4px 4px 0 rgb(0, 0, 0, 0.8);
+    width: 200px;
+    font-size: 15px;
 }
 
 label {
     font-weight: 700;
+    font-size: 15px;
+}
+
+p {
+    width: 50%;
+    text-align: center;
+    padding: 7px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    color: #16578D;
+}
+
+.porcentagem_span {
+    color: #F48924;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.descricao_caixa {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 button {
