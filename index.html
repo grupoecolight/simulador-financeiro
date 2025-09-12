@@ -12,7 +12,7 @@
     <div id="secao-simulacao">
         <h1>Simulador Financeiro - EcoLight</h1>
 
-        <div id="caixa_inputs">
+        <div id="caixa_informacoes">
             <label>
                 KW gastos por mês
                 <br>
@@ -23,11 +23,11 @@
                 <label>
                     Preço por Kw:
                     <br>
-                    <select id="input_preçoKw">
-                        <option value="input_70">R$0,70</option>
-                        <option value="input_85">R$0,85</option>
-                        <option value="input_95">R$0,95</option>
-                        <option value="input_10">R$1,00</option>
+                    <select id="select_preçoKwh">
+                        <option value="option_70">R$0,70</option>
+                        <option value="option_85">R$0,85</option>
+                        <option value="option_95">R$0,95</option>
+                        <option value="option_100">R$1,00</option>
 
                     </select>
                 </label>
@@ -35,36 +35,23 @@
                 <label>
                     Plano à calcular
                     <br>
-                    <select id="input_tempo">
+                    <select id="select_plano">
                         <option value="mensal">Mensal</option>
                         <option value="semestral">Semestral</option>
                         <option value="anual">Anual</option>
                         <option value="bienal">Bienal</option>
                         <option value="quadrianual">Quadrianual</option>
-
-
-
                     </select>
                 </label>
             </div>
 
         </div>
 
-
         <div class="descricao_caixa">
             <p>
-                Essa calculadora leva em consideração os seguintes dados:
-                <br>
-                <br>
-
-                Preço por KW: R$0,85
-
-                <br>
-                <br> Levando em conta uma economia de:<br>
-
+                Este simulador está levando em conta uma economia de
                 <span class="porcentagem_span">20%</span>
-
-                <br> na despesa energética <br>
+                na despesa energética
             </p>
 
             <img src="./assets/logo-ecolight-transp.png" alt="logo ecolight">
@@ -74,7 +61,6 @@
     </div>
 
     <div id="secao_cards">
-
         <div class="teste">
             <div class="card">
                 <h2>Sem a Ecolight, você gastaria:</h2>
@@ -101,41 +87,33 @@
 <script>
     function calcular() {
         var quantidadeKwh = Number(input_quantidade_kwh.value);
-        var tempo = input_tempo.value;
-        var preçoKw = input_preçoKw.value
-        var meses = 0
-        if (tempo == 'mensal') {
-            tempo = 1
-        }
-        if (tempo == 'semestral') {
-            tempo = 6
-        }
-        if (tempo == 'anual') {
-            tempo = 12
-        }
-        if (tempo == 'bienal') {
-            tempo = 24
-        }
-        if (tempo == 'quadrianual') {
-            tempo = 48
-        }
-        if (preçoKw == 'input_70') {
-            preçoKw = 0.70
-        }
-        if (preçoKw == 'input_85') {
-            preçoKw = 0.85
-        }
-        if (preçoKw == 'input_95') {
-            preçoKw = 0.95
-        }
-        if (preçoKw == 'input_10') {
-            preçoKw = 1.00
+        var plano = select_plano.value;
+        var preçoKwh = select_preçoKwh.value
+
+        if (plano == 'mensal') {
+            plano = 1
+        } else if (plano == 'semestral') {
+            plano = 6
+        } else if (plano == 'anual') {
+            plano = 12
+        } else if (plano == 'bienal') {
+            plano = 24
+        } else {
+            plano = 48
         }
 
+        if (preçoKwh == 'option_70') {
+            preçoKwh = 0.7
+        } else if (preçoKwh == 'option_85') {
+            preçoKwh = 0.85
+        } else if (preçoKwh == 'option_95') {
+            preçoKwh = 0.95
+        } else {
+            preçoKwh = 1
+        }
 
-
-        var valorPorKwh = quantidadeKwh * preçoKw
-        var semProduto = valorPorKwh * tempo;
+        var valorPorKwh = quantidadeKwh * preçoKwh
+        var semProduto = valorPorKwh * plano;
         var comProduto = semProduto - semProduto * 0.2;
         var valorPoupado = semProduto - comProduto;
 
@@ -155,8 +133,3 @@
         })}`
     }
 </script>
-
-<!-- A calculadora recebe os valores das quantidadeKwhs mesais, subtrai a porcentagem desejada e armazena em economia mensal. 
-Depois, ela calcula a longo prazo e armazena a economia prevista dos próximos anos
- exibindo também o valor sem a a economia da energia.
--->
