@@ -21,22 +21,29 @@
 
             <div id="caixa_selects">
                 <label>
-                    Bandeira tarifária
+                    Preço por Kw:
                     <br>
-                    <select id="">
-                        <option value="vermelha">Vermelha</option>
-                        <option value="verde">Verde</option>
+                    <select id="input_preçoKw">
+                        <option value="input_70">R$0,70</option>
+                        <option value="input_85">R$0,85</option>
+                        <option value="input_95">R$0,95</option>
+                        <option value="input_10">R$1,00</option>
+
                     </select>
                 </label>
 
                 <label>
                     Plano à calcular
                     <br>
-                    <select id="">
-                        <option value="semanal">Semanal</option>
+                    <select id="input_tempo">
                         <option value="mensal">Mensal</option>
                         <option value="semestral">Semestral</option>
                         <option value="anual">Anual</option>
+                        <option value="bienal">Bienal</option>
+                        <option value="quadrianual">Quadrianual</option>
+
+
+
                     </select>
                 </label>
             </div>
@@ -94,11 +101,41 @@
 <script>
     function calcular() {
         var quantidadeKwh = Number(input_quantidade_kwh.value);
-        var meses = Number(input_meses.value);
+        var tempo = input_tempo.value;
+        var preçoKw = input_preçoKw.value
+        var meses = 0
+        if (tempo == 'mensal') {
+            tempo = 1
+        }
+        if (tempo == 'semestral') {
+            tempo = 6
+        }
+        if (tempo == 'anual') {
+            tempo = 12
+        }
+        if (tempo == 'bienal') {
+            tempo = 24
+        }
+        if (tempo == 'quadrianual') {
+            tempo = 48
+        }
+        if (preçoKw == 'input_70') {
+            preçoKw = 0.70
+        }
+        if (preçoKw == 'input_85') {
+            preçoKw = 0.85
+        }
+        if (preçoKw == 'input_95') {
+            preçoKw = 0.95
+        }
+        if (preçoKw == 'input_10') {
+            preçoKw = 1.00
+        }
 
-        var valorPorKwh = quantidadeKwh * 0.85
 
-        var semProduto = valorPorKwh * meses;
+
+        var valorPorKwh = quantidadeKwh * preçoKw
+        var semProduto = valorPorKwh * tempo;
         var comProduto = semProduto - semProduto * 0.2;
         var valorPoupado = semProduto - comProduto;
 
