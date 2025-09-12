@@ -50,7 +50,7 @@
         <div class="descricao_caixa">
             <p>
                 Este simulador está levando em conta uma economia de
-                <span class="porcentagem_span">20%</span>
+                <span class="porcentagem_span">25%</span>
                 na despesa energética
             </p>
 
@@ -114,7 +114,7 @@
 
         var valorPorKwh = quantidadeKwh * preçoKwh
         var semProduto = valorPorKwh * plano;
-        var comProduto = semProduto - semProduto * 0.2;
+        var comProduto = semProduto - semProduto * 0.25;
         var valorPoupado = semProduto - comProduto;
 
         sem_ecolight_span.innerHTML = `${semProduto.toLocaleString('pt-BR', {
